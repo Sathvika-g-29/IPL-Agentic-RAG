@@ -4,7 +4,6 @@ from src.embeddings import tokenize
 TEAM_KEYWORDS = {
     "captain",
     "coach",
-    "venue",
     "ground",
     "home",
     "team",
@@ -43,6 +42,29 @@ BOWLING_KEYWORDS = {
     "yorker",
 }
 
+VENUE_KEYWORDS = {
+    "venue",
+    "pitch",
+    "dew",
+    "strategy",
+    "ground",
+    "stadium",
+    "wankhede",
+    "chinnaswamy",
+    "chennai",
+    "eden",
+    "ahmedabad",
+    "hyderabad",
+    "jaipur",
+    "mohali",
+    "score",
+    "inning",
+    "average",
+    "boundary",
+    "bat",
+    "bowl",
+}
+
 
 def route_query(query: str) -> str:
     words = set(tokenize(query))
@@ -51,6 +73,7 @@ def route_query(query: str) -> str:
         "team": len(words.intersection(TEAM_KEYWORDS)),
         "batting": len(words.intersection(BATTING_KEYWORDS)),
         "bowling": len(words.intersection(BOWLING_KEYWORDS)),
+        "venue": len(words.intersection(VENUE_KEYWORDS)),
     }
 
     best_route = max(scores, key=scores.get)

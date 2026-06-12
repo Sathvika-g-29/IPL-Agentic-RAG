@@ -6,6 +6,7 @@ INPUT_PATHS = [
     Path("data/team_profile_chunks.jsonl"),
     Path("data/batting_chunks.jsonl"),
     Path("data/bowling_chunks.jsonl"),
+    Path("data/venue_chunks.jsonl"),
 ]
 
 OUTPUT_PATH = Path("data/all_chunks.jsonl")
