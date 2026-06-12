@@ -1,0 +1,62 @@
+Section 11: Conflicting & Noisy Data — Hallucination
+
+Detection
+■ LangGraph Node: ValidationNode — Detects when two nodes return contradicting facts. The graph must route
+through this node before synthesis when multiple sources are retrieved.
+The following records from a SECONDARY SOURCE (unofficial cricket stats portal) conflict with the primary data in Sections 2–3.
+Students must implement a ValidationNode that detects and flags these conflicts rather than silently returning one value.
+ Player / Fact
+ Primary Source
+ Value
+ Secondary Source
+ Value
+ Conflict Type
+ Expected RAG Behaviour
+Virat Kohli — Career
+Runs
+ 7263
+ 7084
+ Value mismatch
+ Flag conflict, cite both, suggest
+ verification
+Yuzvendra Chahal —
+Career Wickets
+ 205
+ 187
+ Value mismatch
+ (retired data?)
+ Flag — secondary may be older
+ dataset
+MI vs CSK — Total
+Matches
+ 35
+ 33
+ Count mismatch
+ Flag conflict, both sources cited
+Highest Team Score
+ 287/3 (SRH, 2024)
+ 263/5 (RCB, 2013)
+Different records by
+ year
+ Clarify: 287/3 is current record; 263/5
+ was previous
+MS Dhoni — Matches
+Played
+ 250
+ 240
+ Count mismatch
+ Flag — 250 is from official IPL;
+ secondary is incomplete
+Best Bowling Figures
+ 6/12 (Alzarri Joseph)
+ 6/14 (Sohail Tanvir)
+ Different records
+ 6/12 is correct; 6/14 was old record.
+ Explain superseded.
+ValidationNode Implementation Hint: After retrieval, compare numeric values for the same entity across chunks. If
+the same field (e.g., 'career runs') has two different values from two different sources, set a flag in state:
+state['conflict_detected'] = True. Route to ValidationNode which builds a conflict-aware prompt: 'Two sources
+disagree on X. Source A says Y. Source B says Z. Please flag this to the user and recommend verification.'
+
+
+--- Page 15 ---

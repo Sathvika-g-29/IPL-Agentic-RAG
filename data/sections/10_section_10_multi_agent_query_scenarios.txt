@@ -1,0 +1,63 @@
+Section 10: Multi-Agent Query Scenarios
+
+■ These queries require 2+ nodes to activate. Single-chain RAG fails on all of them. LangGraph's conditional
+routing and parallel edges handle them naturally.
+Dream11 Selection
+Suggest a Dream11 XI for MI vs SRH at Wankhede tonight.
+Nodes Activated:
+RouterNode → FormNode → BattingStatsNode → BowlingStatsNode → VenueNode → SynthesisNode
+LangGraph Concept:
+Sequential multi-node pipeline with state accumulation
+Step-by-step
+Reasoning:
+ FormNode: Travis Head (102,34,58,12,89) — pick. Abhishek Sharma (135*,43,67) — pick. Bumrah
+(3/24,4/10) — pick.
+ BattingStatsNode: Head SR=191.6, Abhishek SR=188.3 — excellent for Wankhede.
+ BowlingStatsNode: Bumrah economy=7.39, best at death. Rashid economy=6.68.
+ VenueNode: Wankhede — flat pitch, dew in evening, high scoring (avg 175). Pace bowlers key at
+death.
+ SynthesisNode: C=Travis Head, VC=Bumrah. XI: Head, Abhishek, Kohli, Buttler, Samson, Klaasen,
+Bumrah, Rashid, Cummins, Boult, Narine.
+Match Prediction
+CSK is playing RCB at Chinnaswamy. Who will win?
+Nodes Activated:
+RouterNode → H2HNode → VenueNode → FormNode → SynthesisNode
+LangGraph Concept:
+Conditional routing — prediction type triggers H2H → Venue → Form chain
+Step-by-step
+Reasoning:
+ H2HNode: CSK leads 22-8 overall. But last 5: CSK,CSK,RCB,CSK,RCB — CSK edge recently.
+ VenueNode: Chinnaswamy — very flat, short boundary, batting paradise. No total is safe. Avg 185.
+ FormNode: Kohli recent: 92,47,0,73,113 — explosive form. Gaikwad: 78,34,12,90,56 — solid.
+ SynthesisNode: Despite CSK's H2H edge, Chinnaswamy neutralises spinners. RCB's Kohli in peak
+form. RCB slight advantage at home.
+Player Comparison
+Compare Virat Kohli and Rohit Sharma as IPL openers.
+Nodes Activated:
+RouterNode → BattingStatsNode (×2) → SynthesisNode
+LangGraph Concept:
+Parallel node execution — same node called twice with different entities
+Step-by-step
+Reasoning:
+ BattingStatsNode (Kohli): 7263 runs, avg 37.17, SR 130.0, 7 centuries, 50 fifties.
+ BattingStatsNode (Rohit): 6211 runs, avg 29.57, SR 130.5, 1 century, 40 fifties.
+ SynthesisNode: Kohli leads in runs, average, centuries. Rohit marginal SR edge. Kohli is the superior
+IPL opener by metrics.
+Venue-Specific
+Strategy
+What bowling strategy should SRH use at MA Chidambaram against CSK?
+Nodes Activated:
+RouterNode → VenueNode → BowlingStatsNode → H2HNode → SynthesisNode
+LangGraph Concept:
+Multi-type retrieval — venue data drives bowling strategy selection
+Step-by-step
+Reasoning:
+ VenueNode: Chennai — slow, turning pitch. Spinners dominate. Avg 155.
+ BowlingStatsNode: Rashid Khan (leg-spin, econ 6.68), Narine (off-spin, econ 6.69) — ideal for this
+surface.
+ H2HNode: CSK beats SRH consistently at Chennai. CSK's home spin advantage is well documented.
+ SynthesisNode: SRH must open with pace to get early wickets, bring Rashid in over 6-15 when pitch
+turns most. Key: take Gaikwad's wicket early before he settles.
+
+
+--- Page 14 ---

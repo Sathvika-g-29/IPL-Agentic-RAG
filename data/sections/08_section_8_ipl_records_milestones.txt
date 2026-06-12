@@ -1,0 +1,103 @@
+Section 8: IPL Records & Milestones
+
+■ LangGraph Node: RecordsNode — Exact fact retrieval. Tests the RAG system's ability to return precise
+numbers without hallucination.
+ Category
+ Record
+ Player/Team
+ Opponent
+ Venue
+ Year
+Highest Team Score
+ 287/3
+ SRH
+ RCB
+Uppal, Hyderabad
+ 2024
+Highest Individual Score
+ 175* (off 66)
+ Chris Gayle
+ PWI
+ Bengaluru
+ 2013
+Most Runs — Career
+ 7263
+ Virat Kohli
+ —
+ —
+ 2008-24
+Most Wickets — Career
+ 205
+ Yuzvendra Chahal
+ —
+ —
+ 2011-24
+Most Centuries
+ 7
+ Virat Kohli
+ —
+ —
+ 2008-24
+Best Bowling Figures
+ 6/12
+ Alzarri Joseph
+ SRH
+ Wankhede
+ 2019
+Most Sixes — Career
+ 357
+ Chris Gayle
+ —
+ —
+ 2009-22
+Fastest Fifty
+ 14 balls
+ KL Rahul
+ KXIP
+ Dubai
+ 2020
+Most Titles
+ 5
+ MI & CSK
+ —
+ —
+ Various
+Most Matches — Player
+ 250
+ MS Dhoni
+ —
+ —
+ 2008-24
+Highest Chase
+ 232/2
+ KKR
+ RCB
+ Eden Gardens
+ 2024
+Most 4s — Innings
+ 22
+ AB de Villiers
+ MI
+ Bengaluru
+ 2015
+Highest Partnership
+ 229* (2nd wkt)
+ RCB
+ GT
+ Bengaluru
+ 2016
+Most Runs — Single Season
+ 973
+ Virat Kohli
+ —
+ —
+ 2016
+Lowest Total
+ 49 all out
+ RCB
+ KKR
+ Eden Gardens
+ 2017
+
+
+--- Page 11 ---

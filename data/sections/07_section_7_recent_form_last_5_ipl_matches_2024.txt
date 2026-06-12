@@ -1,0 +1,117 @@
+Section 7: Recent Form — Last 5 IPL Matches (2024
+
+Season)
+■ LangGraph Node: FormNode — Recency-weighted retrieval. Recent form must score HIGHER than older data in
+retrieval.
+This is a key LangGraph insight: metadata-filtered retrieval. Chunks from FormNode must have metadata tag
+season=2024 so the retriever prioritises them over historical averages. Without this, the system may answer 'Kohli is in
+poor form' using 2021 data.
+ Player
+ Team
+ Match 1
+ Match 2
+ Match 3
+ Match 4
+ Match 5
+ Form Trend
+ Avg (Last 5)
+Virat Kohli
+ RCB
+ 92
+ 47
+ 0
+ 73
+ 113
+ ↑ Excellent
+ 65.0
+Rohit Sharma
+ MI
+ 11
+ 8
+ 34
+ 67
+ 43
+ → Average
+ 32.6
+Travis Head
+ SRH
+ 102
+ 34
+ 58
+ 12
+ 89
+ ↑ Excellent
+ 59.0
+Jos Buttler
+ RR
+ 67
+ 0
+ 89
+ 45
+ 32
+ → Mixed
+ 46.6
+Jasprit Bumrah
+ MI
+ 3/24
+ 2/18
+ 1/32
+ 4/10
+ 2/28
+ ↑ Excellent
+ 2.4 wkts/gam
+ e
+Rashid Khan
+ GT
+ 2/18
+ 1/22
+ 3/15
+ 0/34
+ 2/20
+ → Consistent
+ 1.6 wkts/gam
+ e
+Hardik Pandya
+ MI
+ 34
+ 12
+ 0
+ 56
+ 28
+ ↓ Poor
+ 26.0
+Ruturaj Gaikwad
+ CSK
+ 78
+ 34
+ 12
+ 90
+ 56
+ ↑ Good
+ 54.0
+Abhishek Sharma
+ SRH
+ 135*
+ 43
+ 67
+ 8
+ 92
+ ↑ Excellent
+ 69.0
+KL Rahul
+ LSG
+ 45
+ 67
+ 23
+ 12
+ 54
+ → Moderate
+ 40.2
+Dream11 Query Example (Multi-agent): 'Suggest a Dream11 team for MI vs SRH at Wankhede tonight.' —
+FormNode: Kohli unavailable (wrong team). Head (102,34,58,12,89 — pick). Bumrah (3/24,2/18,4/10 — must pick).
+VenueNode: Wankhede — flat, dew. Chasing team favoured. Pick SRH batters + MI death bowlers. H2HNode: MI
+vs SRH — recent edge to SRH. SynthesisNode: Captain = Travis Head. Vice-Captain = Bumrah. Dream11: Head,
+Bumrah, Kohli(c), Sharma, Samson, Rashid, Buttler.
+
+
+--- Page 10 ---

@@ -1,0 +1,104 @@
+Section 9: LangGraph Architecture Guide
+
+Core Concept: In LangChain you built a linear chain: Query → Retriever → Prompt → LLM → Answer. In
+LangGraph you build a stateful directed graph: nodes are processing steps (agents), edges are routing decisions,
+and a shared State object carries information between nodes. The graph can loop, branch conditionally, and run
+nodes in parallel — none of which a chain supports.
+9.1 State Schema Design
+Every node reads from and writes to a shared TypedDict state. Design your state before writing any node.
+from typing import TypedDict, List, Optional from langchain_core.documents import Document class
+IPLAgentState(TypedDict): # Input user_query: str query_type: str #
+'batting'|'bowling'|'h2h'|'venue'|'form'|'records'|'prediction' entities: List[str] # extracted
+player/team names # Retrieved context from each node batting_context: List[Document] bowling_context:
+List[Document] h2h_context: List[Document] venue_context: List[Document] form_context: List[Document] #
+Intermediate outputs retrieved_chunks: List[Document] synthesised_context: str # Final final_answer:
+str sources: List[str] confidence: float
+9.2 Graph Node Definitions
+ Node Name
+ Function
+ Input State Keys
+ Output State
+ Keys
+ Routing Condition
+RouterNode
+ Classifies query type and
+ extracts entity names
+ user_query
+ query_type,
+ entities
+ Always first node
+BattingStatsNode
+ Retrieves batting stats for
+ named players
+ entities, query_type
+ batting_context
+ if query_type in ['batting','comparis
+ on','dream11','prediction']
+BowlingStatsNode
+ Retrieves bowling stats for
+ named bowlers
+ entities, query_type
+ bowling_context
+if query_type in ['bowling','comparis
+ on','dream11','prediction']
+H2HNode
+ Retrieves head-to-head
+records between two teams
+ entities
+ h2h_context
+ if query_type in ['h2h','prediction']
+VenueNode
+ Retrieves pitch report for the
+ venue in query
+ entities
+ venue_context
+ if 'venue' in query or
+query_type=='prediction'
+FormNode
+ Retrieves recent-form data
+ (last 5 matches)
+ entities
+ form_context
+ if query_type in ['form','dream11','p
+ rediction']
+RecordsNode
+ Retrieves exact IPL records
+ and milestones
+ user_query
+ retrieved_chunks
+ if query_type=='records'
+SynthesisNode
+ Combines all context, builds
+ final prompt, calls LLM
+ all *_context keys
+ final_answer,
+ sources
+ Always last node
+ValidationNode
+ Checks for conflicting data
+ across contexts
+ all *_context keys
+ final_answer
+(with conflict flag)
+ if multiple sources retrieved
+9.3 Graph Construction Code
+
+
+--- Page 12 ---
+
+from langgraph.graph import StateGraph, END def build_ipl_graph(): graph = StateGraph(IPLAgentState) #
+Add nodes graph.add_node('router', router_node) graph.add_node('batting', batting_stats_node)
+graph.add_node('bowling', bowling_stats_node) graph.add_node('h2h', h2h_node) graph.add_node('venue',
+venue_node) graph.add_node('form', form_node) graph.add_node('records', records_node)
+graph.add_node('synthesis', synthesis_node) # Entry point graph.set_entry_point('router') # Conditional
+routing from RouterNode graph.add_conditional_edges('router', route_query, { 'batting': 'batting',
+'bowling': 'bowling', 'records': 'records', 'prediction': 'h2h', # prediction needs h2h first 'dream11':
+'form', # dream11 needs form first }) # After batting/bowling — go to synthesis
+graph.add_edge('batting', 'synthesis') graph.add_edge('bowling', 'synthesis') graph.add_edge('records',
+'synthesis') # Prediction: h2h → venue → form → synthesis graph.add_edge('h2h', 'venue')
+graph.add_edge('venue', 'form') graph.add_edge('form', 'synthesis') # Dream11: form → batting →
+bowling → synthesis graph.add_edge('form', 'batting') graph.add_edge('batting', 'bowling')
+graph.add_edge('bowling', 'synthesis') graph.add_edge('synthesis', END) return graph.compile()
+
+
+--- Page 13 ---

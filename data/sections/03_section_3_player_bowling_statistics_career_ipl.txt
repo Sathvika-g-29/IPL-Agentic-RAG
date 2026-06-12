@@ -1,0 +1,164 @@
+Section 3: Player Bowling Statistics (Career IPL)
+
+■ LangGraph Node: BowlingStatsNode — Handles wickets, economy, bowling average, best figures.
+ Player
+ Team
+ Mat
+ Wkts
+ Avg
+ Econ
+ SR
+ Best
+ Type
+Yuzvendra Chahal
+ RR
+ 155
+ 205
+ 22.64
+ 7.63
+ 17.8
+ 5/40
+ Leg-spin
+DJ Bravo
+ CSK
+ 161
+ 183
+ 25.05
+ 8.43
+ 17.7
+ 4/22
+ Medium-fast
+Lasith Malinga
+ MI
+ 122
+ 170
+ 19.80
+ 7.14
+ 16.6
+ 5/13
+ Yorker specialist
+Piyush Chawla
+ CSK
+ 175
+ 175
+ 25.58
+ 7.78
+ 19.7
+ 4/17
+ Leg-spin
+Jasprit Bumrah
+ MI
+ 135
+ 170
+ 22.50
+ 7.39
+ 18.2
+ 5/10
+ Pace/Yorker
+Amit Mishra
+ DC
+ 154
+ 166
+ 24.34
+ 7.36
+ 19.8
+ 5/17
+ Leg-spin
+Sunil Narine
+ KKR
+ 174
+ 163
+ 24.09
+ 6.69
+ 21.5
+ 5/19
+ Mystery off-spin
+Harbhajan Singh
+ MI
+ 163
+ 150
+ 26.39
+ 6.97
+ 22.7
+ 5/18
+ Off-spin
+Sandeep Sharma
+ PBKS
+ 138
+ 142
+ 26.42
+ 8.11
+ 19.5
+ 4/21
+ Medium-pace
+Kagiso Rabada
+ DC
+ 74
+ 113
+ 21.74
+ 8.34
+ 15.6
+ 4/21
+ Fast bowling
+Trent Boult
+ RR
+ 78
+ 105
+ 23.43
+ 8.18
+ 17.1
+ 4/18
+ Swing bowling
+Mohammed Shami
+ GT
+ 88
+ 114
+ 22.38
+ 8.02
+ 16.7
+ 4/16
+ Fast bowling
+Pat Cummins
+ SRH
+ 57
+ 78
+ 25.17
+ 8.45
+ 17.8
+ 4/14
+ Fast bowling
+Varun Chakravarthy
+ KKR
+ 67
+ 102
+ 22.78
+ 7.11
+ 19.2
+ 5/20
+ Mystery spin
+Rashid Khan
+ GT
+ 92
+ 131
+ 20.44
+ 6.68
+ 18.3
+ 5/17
+ Leg-spin
+Chahal
+Bravo
+Malinga
+Chawla
+Bumrah
+Mishra
+Narine
+Harbhajan
+0
+50
+100
+150
+200
+Top Wicket-Takers — Career IPL
+
+
+--- Page 5 ---

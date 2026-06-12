@@ -1,0 +1,108 @@
+Section 4: Head-to-Head Team Records
+
+■ LangGraph Node: H2HNode — Powers match prediction queries. Must retrieve TWO teams' records
+simultaneously.
+This is a multi-document node. It retrieves the H2H record AND each team's recent form, then passes both to a
+SynthesisNode that generates the prediction. Single-chain RAG cannot handle this elegantly — LangGraph's parallel
+edges make it natural.
+ Matchup
+ Total
+Matches
+ Team 1
+ Wins
+ Team 2
+ Wins
+Tied/N
+ R
+ Last 5 (→ winner)
+ High Score
+ Key Factor
+MI vs CSK
+ 35
+ 20
+ 14
+ 1
+ MI,CSK,MI,CSK,MI
+ 235/1 (MI)
+ Bumrah vs Dhoni
+RCB vs KKR
+ 32
+ 14
+ 18
+ 0
+ KKR,RCB,KKR,KKR,RCB
+ 213/2 (RCB)
+ Kohli vs Narine
+CSK vs RCB
+ 30
+ 22
+ 8
+ 0
+ CSK,CSK,RCB,CSK,RCB
+ 226/6 (RCB)
+ Spinners vs
+ Power
+MI vs SRH
+ 28
+ 16
+ 12
+ 0
+ SRH,MI,SRH,MI,SRH
+ 219/4 (SRH)
+ Bumrah vs Head
+RR vs DC
+ 26
+ 14
+ 12
+ 0
+ RR,DC,RR,RR,DC
+ 217/5 (RR)
+Buttler vs Rabada
+GT vs LSG
+ 8
+ 5
+ 3
+ 0
+ GT,LSG,GT,GT,LSG
+ 227/2 (SRH)
+ Gill vs Rahul
+KKR vs MI
+ 34
+ 17
+ 17
+ 0
+ MI,KKR,KKR,MI,KKR
+ 232/2 (KKR)
+Narine vs Bumrah
+SRH vs RCB
+ 22
+ 11
+ 11
+ 0
+ SRH,RCB,SRH,RCB,SRH
+ 287/3 (SRH)
+ Head vs Kohli
+PBKS vs RR
+ 28
+ 14
+ 14
+ 0
+ RR,PBKS,RR,RR,PBKS
+ 221/3 (PBKS)
+ Dhawan vs
+ Samson
+DC vs CSK
+ 30
+ 14
+ 16
+ 0
+ CSK,DC,CSK,CSK,DC
+ 208/4 (DC)
+ Pant vs Dhoni
+Multi-hop H2H Query Example: 'If MI plays CSK at Wankhede tonight, who will win?' — H2HNode fetches: MI
+leads 20-14 overall, MI won last 3 at Wankhede. VenueNode fetches: Wankhede favours pace, average first-innings
+175. FormNode fetches: MI won 3 of last 5, CSK won 2 of last 5. SynthesisNode combines: MI slightly favoured at
+home given pace advantage and recent form.
+
+
+--- Page 6 ---

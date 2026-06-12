@@ -1,0 +1,117 @@
+Section 13: Recommended Chunking Strategy for This
+
+Dataset
+This section guides students on the optimal chunking approach for each content type in this dataset. Unlike the
+Placement dataset (single chain), here chunking must align with the LangGraph node that will retrieve it.
+ Content Type
+ Node That
+ Retrieves
+ Strategy
+ Chunk Size
+ Critical Metadata
+ Key Pitfall
+Team Profiles Table
+ TeamProfileNode
+ 1 row = 1 chunk
+(serialise to text)
+~100 tokens
+ team_name, season=20
+ 24, section='team'
+ Embedding full table as
+one chunk loses per-team
+ retrieval
+Batting Stats Table
+ BattingStatsNode
+ 1 row = 1 chunk per
+ player
+ ~80 tokens
+ player_name, team,
+role, section='batting'
+Must tag role (Opener/WK/
+ All-rounder) for filtered
+ queries
+Bowling Stats Table
+ BowlingStatsNode
+ 1 row = 1 chunk per
+ player
+ ~80 tokens
+ player_name, team,
+bowl_type, section='bowl
+ ing'
+ Bowl type (spin/pace)
+ metadata enables
+conditional routing
+H2H Records
+ H2HNode
+ 1 row = 1 chunk per
+ matchup
+~120 tokens
+ team1, team2,
+ section='h2h'
+ Must store BOTH team
+names in metadata for
+ bidirectional retrieval
+Venue Narratives
+ VenueNode
+ 1 venue = 1 chunk
+~200 tokens
+ venue_name, city,
+pitch_type, section='ven
+ ue'
+ Pitch type metadata
+(slow/flat/bouncy) enables
+ conditional routing
+Season Results
+ TrendNode
+ 1 row per team per
+ year
+ ~50 tokens
+ team, year, section='sea
+ son'
+ YEAR metadata is
+mandatory — without it
+ temporal queries fail
+Recent Form
+ FormNode
+ 1 row = 1 chunk per
+ player
+~100 tokens
+ player_name,
+season=2024, section='f
+ orm'
+ Must set season=2024 to
+ outrank historical data in
+ retrieval
+IPL Records
+ RecordsNode
+ 1 row = 1 chunk per
+ record
+ ~80 tokens
+category, section='record
+ s'
+ Records are exact —
+ embedding as prose
+causes precision loss
+Conflicting Data
+ ValidationNode
+ Both versions kept,
+ tagged by source
+ ~80 tokens
+source='primary'/'second
+ ary', conflict=True
+ Do NOT deduplicate —
+ ValidationNode needs
+ BOTH versions
+LangGraph Code
+ Not retrieved
+ Do NOT embed in
+ vector store
+ N/A
+ N/A
+ Code is reference only —
+ embedding it pollutes
+ semantic search
+Key Insight for Judges: Ask each team: How many chunks did your vector store have? An unoptimised pipeline
+will produce ~600+ chunks. A well-designed one will produce ~180–220 meaningful chunks. More importantly —
+ask: 'Can your system answer Q:H1 (Dream11 for KKR vs RCB)?' If yes, they implemented multi-node routing
+correctly. If it returns a generic answer, they are still using a single-chain approach.

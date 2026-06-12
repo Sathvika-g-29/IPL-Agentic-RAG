@@ -1,0 +1,148 @@
+Section 5: Venue & Pitch Reports
+
+■ LangGraph Node: VenueNode — Routes based on pitch type. Slow pitch → SpinNode. Fast pitch → PaceNode.
+ Venue
+ City
+ Capacity
+ Pitch Type
+ Avg 1st
+Innings
+Batting/Bowli
+ ng
+ Dew
+Factor
+ Best
+Strategy
+Wankhede Stadium
+ Mumbai
+ 33,108
+ Flat, true bounce
+ 175
+ Batting-friendl
+ y
+High even
+ ing
+Bat first,
+use pace
+ death
+bowling
+MA Chidambaram Stadium
+ Chennai
+ 50,000
+ Slow, turning
+ 155
+Bowling-friend
+ ly
+ Low
+Bowl first,
+spinners
+in overs
+ 7-15
+M Chinnaswamy Stadium
+ Bengaluru
+ 35,000
+ Flat, short boundary
+ 185
+ Very bat-frien
+ dly
+ Moderate
+Bat first,
+ score
+180+.
+No safe
+ total.
+Eden Gardens
+ Kolkata
+ 66,000
+Good pace & bounce
+ 165
+ Balanced
+High even
+ ing
+Flexible.
+Spinners
+and pac
+ers both
+effective.
+Narendra Modi Stadium
+ Ahmedabad
+ 132,000
+ Flat, big ground
+ 170
+ Slightly bat
+ Low
+Bat first.
+Spinners
+effective
+in secon
+ d half.
+Rajiv Gandhi Intl. Stadium
+ Hyderabad
+ 55,000
+ Flat, bouncy
+ 178
+ Batting-friendl
+ y
+ High
+Bat first.
+ Dew ma
+kes chas
+ing very
+ easy in
+ 2nd.
+Sawai Mansingh Stadium
+ Jaipur
+ 23,000
+ Slow, low
+ 158
+Bowling-friend
+ ly
+ Low
+Bowl first.
+ Spinner
+s domina
+ te aftern
+oon gam
+ es.
+IS Bindra Stadium
+ Mohali
+ 26,950
+ Good carry, seam
+ 168
+ Balanced
+ Moderate
+Flexible.
+Fast bow
+ lers get
+ swing
+ early.
+Venue Narrative Reports
+Wankhede Stadium,
+Mumbai
+Wankhede is a batter's paradise with a short square boundary (55m). The pitch has true bounce
+— fast bowlers hit the bat hard. In evening games, dew makes the ball skid on, heavily favouring
+the chasing team. Jasprit Bumrah is MI's key weapon here — his yorkers on this surface are
+nearly unplayable. Average first-innings score: 175. Teams that bat first win ~45% of the time.
+MA Chidambaram, Chennai
+Chennai's pitch is the most spin-friendly in the IPL. Slow, dry surface that breaks up
+progressively. Off-spinners and leg-spinners become virtually unplayable in the second innings.
+CSK has historically won 65% of home games here. The key skill here: playing spin under
+pressure. Average first-innings: 155. Bowling first wins ~60% of matches.
+
+
+--- Page 7 ---
+
+M Chinnaswamy, Bengaluru
+Chinnaswamy is arguably the most batter-friendly ground. Short boundaries all around, flat pitch,
+and high altitude means the ball travels further. 200+ totals are common. The 2024 season saw
+multiple 220+ scores here. RCB's home advantage is significant: Kohli averages 58 at this
+ground. No total is ever safe here.
+Rajiv Gandhi Intl. Stadium,
+Hyderabad
+SRH's home ground became the most feared batting venue in 2024. The flat pitch combined with
+heavy evening dew makes chasing almost a formality in night matches. Travis Head's 191.6 SR
+and Abhishek Sharma's 188.3 SR are products of this ground. In 2024, SRH scored 250+ twice
+here. Bowling first is almost always the correct call.
+
+
+--- Page 8 ---

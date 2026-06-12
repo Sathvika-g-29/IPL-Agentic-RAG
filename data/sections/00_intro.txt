@@ -1,0 +1,77 @@
+--- Page 1 ---
+
+■ IPL Intelligence Assistant Dataset
+ Multimodal RAG Exercise with LangGraph
+ SVECW · Department of Information Technology · RAG-ATHON 24 — Advanced Track
+Why IPL + LangGraph? The Placement dataset taught you a single-chain RAG pipeline using LangChain. This
+dataset is designed to force you to think in graphs, not chains. IPL queries are naturally multi-agent: a Dream11
+recommendation needs a Player Stats Agent, a Pitch Conditions Agent, and a Recent Form Agent to collaborate. A
+match prediction needs conditional routing based on whether the query is about batting, bowling, or all-round
+performance. LangGraph models this as a stateful directed graph — nodes are agents, edges are routing
+decisions, and the state flows between them. This dataset gives you the corpus to build that system.
+Dataset Content Map
+Sect
+ ion
+ Content
+ LangGraph Node It Powers
+ RAG Challenge
+1
+ Team Profiles (10 teams)
+ TeamProfileNode
+ Structured table extraction
+2
+Player Stats — Batting (30
+ players)
+ BattingStatsNode
+ Numeric comparison, threshold filter
+3
+ Player Stats — Bowling
+ (20 players)
+ BowlingStatsNode
+ Multi-column aggregation
+4
+ Head-to-Head Records
+ (10 matchups)
+ H2HNode
+ Cross-document synthesis
+5
+ Venue & Pitch Reports (8 
+ venues)
+ VenueNode
+ Conditional routing by venue
+6
+Season-wise Performance
+ (2019–2024)
+ TrendNode
+ Temporal reasoning
+7
+ Recent Form — Last 5
+ Matches
+ FormNode
+ Recency-weighted retrieval
+8
+ IPL Records & Milestones
+ RecordsNode
+ Exact fact retrieval
+9
+ LangGraph Architecture
+ Guide
+ Graph Orchestrator
+ Agent design & state schema
+10
+ Multi-Agent Query
+ Scenarios
+ Full Graph
+ Multi-hop, conditional routing
+11
+ Conflicting / Noisy Data
+ ValidationNode
+ Hallucination detection
+12
+ Official 35-Query
+ Evaluation Set
+ Judge's Scorecard
+ All node types tested
+
+
+--- Page 2 ---

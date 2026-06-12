@@ -1,0 +1,111 @@
+Section 1: IPL Team Profiles (2024 Season)
+
+■ LangGraph Node: TeamProfileNode — Routes queries about team identity, home ground, captain, and coach.
+This is the entry-point node. When the query is 'Tell me about MI' or 'Who captains CSK?', the graph router directs flow
+here. This node must retrieve structured team data and pass it downstream to other nodes if the query needs further
+enrichment (e.g., captain's batting stats).
+ Team
+Short
+ Home Venue
+ Captain
+ Coach
+ Titles
+ 2024 Pos
+Mumbai Indians
+ MI
+Wankhede Stadium, Mumbai
+ Hardik Pandya
+ Mark Boucher
+ 5
+ 5th
+Chennai Super Kings
+ CSK
+ MA Chidambaram Stadium,
+ Chennai
+ Ruturaj Gaikwad
+ Stephen Fleming
+ 5
+ Runner-up
+Royal Challengers
+Bengaluru
+ RCB
+ M Chinnaswamy Stadium,
+ Bengaluru
+ Faf du Plessis
+ Andy Flower
+ 3
+ Champions
+Kolkata Knight Riders
+ KKR
+ Eden Gardens, Kolkata
+ Shreyas Iyer
+ Chandrakant Pandit
+ 3
+ Champions
+Delhi Capitals
+ DC
+ Arun Jaitley Stadium, Delhi
+ Rishabh Pant
+ Ricky Ponting
+ 0
+ 6th
+Punjab Kings
+PBKS
+ IS Bindra Stadium, Mohali
+ Shikhar Dhawan
+ Trevor Bayliss
+ 0
+ 9th
+Rajasthan Royals
+ RR
+ Sawai Mansingh Stadium,
+ Jaipur
+ Sanju Samson
+ Kumar Sangakkara
+ 2
+ Runner-up
+Sunrisers Hyderabad
+ SRH
+ Rajiv Gandhi Intl. Stadium,
+ Hyd
+ Pat Cummins
+ Daniel Vettori
+ 1
+ 4th
+Lucknow Super Giants
+ LSG
+ BRSABV Ekana Stadium,
+ Lucknow
+ KL Rahul
+ Justin Langer
+ 0
+ 7th
+Gujarat Titans
+ GT
+ Narendra Modi Stadium,
+ Ahmedabad
+ Shubman Gill
+ Ashish Nehra
+ 2
+ 8th
+Team Strategies — Narrative Corpus
+ Team
+ Playing Style & Strategy
+MI
+ Builds around power-hitters in middle order. Relies on Bumrah's death bowling. Strategy: win powerplay,
+ consolidate, explode in overs 16-20.
+CSK
+ Spinners on slow Chennai pitch. Dhoni's finishing. Strategy: anchor the innings, use spinners in middle overs, finish
+ with big hitters.
+RCB
+ Relies heavily on Kohli and du Plessis for big scores. Strategy: post 180+, defend with pace. Home advantage at
+ high-scoring Chinnaswamy.
+KKR
+ Mystery spinners (Narine, Chakravarthy) disrupt middle overs. Strategy: take wickets in overs 6-14, chase with
+ aggression.
+SRH
+2024 season — rewrote records with 250+ totals. Travis Head and Abhishek Sharma open explosively. Strategy: bat
+ first, score 220+, defend.
+
+
+--- Page 3 ---

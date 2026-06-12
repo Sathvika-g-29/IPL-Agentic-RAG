@@ -1,0 +1,219 @@
+Section 12: Official Evaluation Query Set — 35 Questions
+
+Judges use these 35 queries to evaluate each team's LangGraph RAG system. Each query is tagged with the nodes it
+should activate and the difficulty level.
+ ID
+ Query
+ Level
+ Node(s)
+ RAG Skill
+ E1
+What is the minimum CGPA to join RCB's squad
+(irrelevant — tests fallback)?
+ Easy
+ Records
+Fallback — out of corpus
+ E2
+Who captains Chennai Super Kings in 2024?
+ Easy
+ Team
+Direct table lookup
+ E3
+How many IPL titles has Mumbai Indians won?
+ Easy
+ Team
+Direct table lookup
+ E4
+What is Virat Kohli's career IPL run tally?
+ Easy
+ Batting
+Direct stat lookup
+ E5
+Who has taken the most wickets in IPL history?
+ Easy
+ Bowling
+Direct stat lookup
+ E6
+What is the highest team total in IPL history?
+ Easy
+ Records
+Exact record retrieval
+ E7
+What type of pitch is the Chinnaswamy Stadium
+known for?
+ Easy
+ Venue
+Direct venue lookup
+ E8
+How many matches has MS Dhoni played in IPL?
+ Easy
+ Records
+Direct record lookup
+ M1
+Which teams won the IPL title more than once
+between 2019–2024?
+ Medium
+ Trend
+Temporal filter
+ M2
+List all bowlers with an economy rate below 7.0.
+ Medium
+ Bowling
+Threshold filter
+ M3
+Which opener has the highest strike rate among
+batters in the dataset?
+ Medium
+ Batting
+Role filter + sort
+ M4
+Compare Jasprit Bumrah and Rashid Khan on all
+bowling metrics.
+ Medium
+ Bowling
+Multi-attribute comparison
+ M5
+Which venue has the highest average first-innings
+score?
+ Medium
+ Venue
+Numeric comparison
+ M6
+How many times have MI and CSK played each
+other?
+ Medium
+ H2H
+Direct H2H lookup
+ M7
+Who won the last 5 matches between KKR and
+RCB?
+ Medium
+ H2H
+H2H sequence retrieval
+ M8
+What is Virat Kohli's form in the last 5 matches?
+ Medium
+ Form
+Recency retrieval
+ M9
+Which team should bat first at Eden Gardens and
+why?
+ Medium
+ Venue
+Strategy + venue synthesis
+ M10
+Which player has the most centuries in IPL history?
+ Medium
+ Records
+Aggregated record lookup
+ H1
+Suggest a Dream11 XI for KKR vs RCB at Eden
+Gardens.
+ Hard
+ Multi-node
+Form+Batting+Bowling+Venue+Synt
+hesis
+ H2
+Who is likely to win if RR plays SRH at Wankhede?
+Justify.
+ Hard
+ Multi-node
+H2H+Venue+Form+Synthesis
+ H3
+Which team has been the most consistent across
+all seasons from 2019–2024?
+ Hard
+ Trend
+Multi-year aggregation + ranking
+ H4
+What bowling strategy should MI use against RCB
+at Chinnaswamy?
+ Hard
+ Multi-node
+Venue+Bowling+H2H
+ H5
+Compare Rohit Sharma and KL Rahul as IPL
+captains — batting + team results.
+ Hard
+ Multi-node
+Batting+Team+Trend
+ H6
+Has any conflict been detected in Virat Kohli's
+career runs data?
+ Hard
+ Validation
+Conflict detection
+ H7
+Which is better — chasing or defending at
+Hyderabad? Use historical data.
+ Hard
+ Venue+H2H
+Multi-source synthesis
+ X1
+Who should I pick as Dream11 captain for every
+match this week?
+ Expert
+ Out-of-corpus
+No schedule data — fallback
+ X2
+What is Kohli's average against left-arm pace
+specifically?
+ Expert
+ Out-of-corpus
+Granular stat not in dataset —
+fallback
+ X3
+Is Yuzvendra Chahal's wicket count 205 or 187?
+ Expert
+ Validation
+Conflict resolution from Sec 11
+
+
+--- Page 16 ---
+
+ID
+ Query
+ Level
+ Node(s)
+ RAG Skill
+ X4
+Predict the IPL 2025 champion.
+ Expert
+ Out-of-corpus
+Future prediction — graceful decline
+ X5
+Which player has the highest salary in IPL 2024
+auction?
+ Expert
+ Out-of-corpus
+Auction data not in corpus —
+fallback
+ X6
+What is the BCCI's net worth?
+ Expert
+ Out-of-scope
+Completely out of scope
+ X7
+Tell me everything about cricket.
+ Expert
+ Too vague
+Ask for clarification before retrieval
+ X8
+Is Sachin Tendulkar in this IPL dataset?
+ Expert
+ Out-of-corpus
+Retired before IPL — flag absence
+ X9
+Who won the Best Batsman award in IPL 2024?
+ Expert
+ Out-of-corpus
+Award data not in corpus
+ X10
+Suggest a team for BCCI's next T20 World Cup
+squad.
+ Expert
+ Out-of-scope
+Different competition, out of scope
+
+
+--- Page 17 ---

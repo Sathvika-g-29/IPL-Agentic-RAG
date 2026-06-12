@@ -1,0 +1,233 @@
+Section 2: Player Batting Statistics (Career IPL)
+
+■ LangGraph Node: BattingStatsNode — Handles queries about runs, strike rate, averages, centuries, fifties.
+This node receives the player name and stat type from the RouterNode. It retrieves the relevant row(s) and returns
+structured data. If the query is a comparison ('Kohli vs Rohit'), the node is called TWICE and results are merged by the
+ComparisonNode downstream.
+ Player
+ Team
+ Mat
+ Runs
+ Avg
+ SR
+100s
+ 50s
+ HS
+ Role
+Virat Kohli
+ RCB
+ 237
+ 7263
+ 37.17
+ 130.0
+ 7
+ 50
+ 113
+ Top-order bat
+Rohit Sharma
+ MI
+ 243
+ 6211
+ 29.57
+ 130.5
+ 1
+ 40
+ 109*
+ Opener
+Shubman Gill
+ GT
+ 98
+ 3196
+ 42.61
+ 148.7
+ 3
+ 24
+ 129
+ Opener
+Ruturaj Gaikwad
+ CSK
+ 87
+ 2835
+ 38.83
+ 136.8
+ 2
+ 19
+ 101*
+ Opener
+Sanju Samson
+ RR
+ 171
+ 4410
+ 29.86
+ 140.5
+ 4
+ 28
+ 119
+ WK-Bat
+KL Rahul
+ LSG
+ 115
+ 4163
+ 47.30
+ 134.3
+ 4
+ 33
+ 132*
+ Opener/WK
+Shreyas Iyer
+ KKR
+ 115
+ 3122
+ 33.57
+ 127.8
+ 1
+ 25
+ 96
+ Middle-order
+Rishabh Pant
+ DC
+ 111
+ 3284
+ 35.31
+ 148.3
+ 0
+ 18
+ 128*
+ WK-Bat
+Hardik Pandya
+ MI
+ 133
+ 2754
+ 30.60
+ 145.5
+ 0
+ 15
+ 91*
+ All-rounder
+Suryakumar Yadav
+ MI
+ 148
+ 3225
+ 32.57
+ 161.7
+ 0
+ 23
+ 103
+ Middle-order
+David Warner
+ DC
+ 184
+ 6565
+ 41.42
+ 139.9
+ 4
+ 59
+ 126
+ Opener
+Jos Buttler
+ RR
+ 89
+ 3422
+ 46.24
+ 149.2
+ 5
+ 21
+ 124
+ Opener/WK
+Faf du Plessis
+ RCB
+ 121
+ 3779
+ 38.56
+ 134.2
+ 2
+ 30
+ 96
+ Opener
+Travis Head
+ SRH
+ 21
+ 872
+ 43.60
+ 191.6
+ 1
+ 6
+ 102
+ Opener
+Abhishek Sharma
+ SRH
+ 40
+ 1254
+ 33.78
+ 188.3
+ 1
+ 7
+ 135*
+ Opener
+MS Dhoni
+ CSK
+ 250
+ 5243
+ 39.42
+ 135.9
+ 0
+ 24
+ 84*
+ WK-Finisher
+AB de Villiers
+ RCB
+ 184
+ 5162
+ 39.70
+ 151.7
+ 3
+ 38
+ 133*
+ Middle-order
+Ishan Kishan
+ MI
+ 105
+ 2644
+ 27.28
+ 136.2
+ 1
+ 15
+ 99
+ Opener/WK
+Quinton de Kock
+ LSG
+ 78
+ 2516
+ 35.43
+ 138.9
+ 1
+ 18
+ 140*
+ Opener/WK
+Heinrich Klaasen
+ SRH
+ 54
+ 1892
+ 43.95
+ 162.8
+ 1
+ 13
+ 104
+ Middle-order
+Kohli
+Warner
+Rohit
+Dhoni
+de Villiers
+Buttler
+0
+2000
+4000
+6000
+8000
+Top 6 Batters — Career IPL Runs
+■ LangGraph RAG Challenge: When asked 'Who has the best strike rate among openers?', the BattingStatsNode must
+first FILTER by Role='Opener', then sort by SR. This requires metadata-filtered retrieval, not just semantic similarity.
+
+
+--- Page 4 ---
