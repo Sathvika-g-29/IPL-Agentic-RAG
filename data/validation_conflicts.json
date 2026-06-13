@@ -1,0 +1,44 @@
+[
+  {
+    "fact": "Virat Kohli Career Runs",
+    "primary_value": "7263",
+    "secondary_value": "7084",
+    "conflict_type": "Value mismatch",
+    "expected_behavior": "Flag conflict, cite both, suggest verification"
+  },
+  {
+    "fact": "Yuzvendra Chahal Career Wickets",
+    "primary_value": "205",
+    "secondary_value": "187",
+    "conflict_type": "Value mismatch",
+    "expected_behavior": "Flag conflict; secondary may be older dataset"
+  },
+  {
+    "fact": "MI vs CSK Total Matches",
+    "primary_value": "35",
+    "secondary_value": "33",
+    "conflict_type": "Count mismatch",
+    "expected_behavior": "Flag conflict, both sources cited"
+  },
+  {
+    "fact": "Highest Team Score",
+    "primary_value": "287/3 (SRH, 2024)",
+    "secondary_value": "263/5 (RCB, 2013)",
+    "conflict_type": "Different records by year",
+    "expected_behavior": "Clarify that 287/3 is current record; 263/5 was previous"
+  },
+  {
+    "fact": "MS Dhoni Matches Played",
+    "primary_value": "250",
+    "secondary_value": "240",
+    "conflict_type": "Count mismatch",
+    "expected_behavior": "Flag that 250 is from official IPL; secondary is incomplete"
+  },
+  {
+    "fact": "Best Bowling Figures",
+    "primary_value": "6/12 (Alzarri Joseph)",
+    "secondary_value": "6/14 (Sohail Tanvir)",
+    "conflict_type": "Different records",
+    "expected_behavior": "Explain 6/12 is correct; 6/14 was old record"
+  }
+]
