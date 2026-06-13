@@ -1,4 +1,4 @@
-# IPL InsightGraph 🏏
+# IPL-Agentic-RAG🏏
 
 A LangGraph-powered Agentic RAG system for IPL analytics, player statistics, match insights, Dream11 recommendations, and prediction workflows.
 
