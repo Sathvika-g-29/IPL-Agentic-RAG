@@ -1,5 +1,6 @@
 from src.retrievers.chroma_retriever import ChromaRetriever
 from src.state import IPLState
+from src.nodes.synthesis_node import synthesize_dream11_answer
 from src.workflows.prediction_workflow import extract_team_codes
 
 
@@ -61,18 +62,19 @@ def dream11_workflow(state: IPLState, retriever: ChromaRetriever) -> IPLState:
             f"from {', '.join(teams)} in batting, bowling, and form chunks, so this is a partial XI."
         )
 
-    state["answer"] = (
-        "Dream11 workflow used FormNode, BattingStatsNode, BowlingStatsNode, VenueNode, H2HNode, then Synthesis.\n\n"
-        f"Venue context: {venue_text}\n\n"
-        f"H2H context: {h2h_text}\n\n"
-        "Suggested XI from available dataset chunks:\n"
-        + "\n".join(player_lines)
-        + availability_note
-        + f"\n\nCaptain suggestion: {captain}.\n"
-        + f"Vice-captain suggestion: {vice_captain}.\n"
-        + "Reason: prioritize excellent recent form, strong venue fit, and strike bowlers from the matchup."
-    )
+    team_lineup_text = "\n".join(player_lines) + availability_note
 
+    state["route"] = "dream11"
+    state = synthesize_dream11_answer(
+        state=state,
+        team_lineup_text=team_lineup_text,
+        venue_text=venue_text,
+        h2h_text=h2h_text,
+        captain=captain,
+        vice_captain=vice_captain,
+        note="Reason: prioritize excellent recent form, strong venue fit, and strike bowlers from the matchup.",
+        intro="Dream11 workflow used FormNode, BattingStatsNode, BowlingStatsNode, VenueNode, H2HNode, then Synthesis.",
+    )
     return state
 
 

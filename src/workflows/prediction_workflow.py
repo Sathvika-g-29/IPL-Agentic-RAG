@@ -2,6 +2,7 @@ import re
 
 from src.retrievers.chroma_retriever import ChromaRetriever
 from src.state import IPLState
+from src.nodes.synthesis_node import synthesize_prediction_answer
 
 
 TEAM_CODES = {"MI", "CSK", "RCB", "KKR", "DC", "PBKS", "RR", "SRH", "LSG", "GT"}
@@ -60,14 +61,13 @@ def prediction_workflow(state: IPLState, retriever: ChromaRetriever) -> IPLState
 
     predicted_team = predict_from_h2h_content(h2h_text, teams)
 
-    answer = (
-        f"Prediction workflow used H2HNode, VenueNode, FormNode, then Synthesis.\n\n"
-        f"H2H evidence: {h2h_text}\n\n"
-        f"Venue evidence: {venue_text}\n\n"
-        f"Recent form evidence:\n{form_text}\n\n"
-        f"Synthesis: Based mainly on the head-to-head edge, the likely winner is {predicted_team}. "
-        f"Use venue and form as supporting context, not as an absolute guarantee."
+    state["route"] = "prediction"
+    state = synthesize_prediction_answer(
+        state=state,
+        predicted_team=predicted_team,
+        h2h_text=h2h_text,
+        venue_text=venue_text,
+        form_text=form_text,
+        intro="Prediction workflow used H2HNode, VenueNode, FormNode, then Synthesis.",
     )
-
-    state["answer"] = answer
     return state
