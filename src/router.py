@@ -131,12 +131,23 @@ VENUE_KEYWORDS = {
     "bat",
     "bowl",
 }
-
+COMPARISON_KEYWORDS = {
+    "compare",
+    "comparison",
+    "versus",
+    "better",
+    "between",
+}
 
 def route_query(query: str) -> str:
     words = set(tokenize(query))
     query_lower = query.lower()
-
+    if words.intersection(COMPARISON_KEYWORDS):
+        if "bowl" in query_lower or "wicket" in query_lower or "economy" in query_lower:
+            return "comparison"
+        if "run" in query_lower or "average" in query_lower or "strike" in query_lower:
+            return "comparison"
+        return "comparison"
     if words.intersection(VALIDATION_KEYWORDS):
         return "validation"
 

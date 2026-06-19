@@ -18,6 +18,12 @@ TEST_QUERIES = [
     "What is Virat Kohli career IPL run tally?",
     "Who captains CSK?",
     "What is the pitch like at Wankhede?",
+     "Which opener has the highest strike rate among batters?",
+    "List all bowlers with economy rate below 7.0.",
+    "Compare Virat Kohli and Rohit Sharma",
+    "Compare Jasprit Bumrah and Rashid Khan",
+    "Which team has high win rate?",
+    "What is the highest team total in IPL history?",
 ]
 
 
