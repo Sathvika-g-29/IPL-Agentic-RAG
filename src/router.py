@@ -135,12 +135,31 @@ VENUE_KEYWORDS = {
 
 def route_query(query: str) -> str:
     words = set(tokenize(query))
+    query_lower = query.lower()
 
     if words.intersection(VALIDATION_KEYWORDS):
         return "validation"
 
     if words.intersection(DREAM11_KEYWORDS):
         return "dream11"
+
+    if "who will win" in query_lower or "predict" in words or "prediction" in words:
+        return "prediction"
+
+    if "win rate" in query_lower or "winning rate" in query_lower:
+        return "trend"
+
+    if "most consistent" in query_lower or "consistency" in words:
+        return "trend"
+
+    if "highest score" in query_lower or "most runs" in query_lower or "most wickets" in query_lower:
+        return "records"
+
+    if "head to head" in query_lower or "h2h" in words:
+        return "h2h"
+
+    if "recent form" in query_lower or "last 5" in query_lower:
+        return "form"
 
     if "vs" in words and words.intersection(PREDICTION_KEYWORDS):
         return "prediction"
