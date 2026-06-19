@@ -7,6 +7,18 @@ from src.workflows.prediction_workflow import extract_team_codes
 def dream11_workflow(state: IPLState, retriever: ChromaRetriever) -> IPLState:
     query = state["query"]
     teams = extract_team_codes(query)
+
+    if len(teams) < 2 or "every match" in query.lower() or "this week" in query.lower():
+        state["route"] = "dream11"
+        state["answer"] = (
+            "This Dream11 request needs a specific matchup from the dataset. "
+            "Try something like 'Suggest Dream11 for MI vs SRH at Wankhede'."
+        )
+        state["form_chunks"] = []
+        state["venue_chunks"] = []
+        state["h2h_chunks"] = []
+        return state
+
     team_query = " ".join(teams) if teams else query
 
     form_chunks = filter_team_chunks(

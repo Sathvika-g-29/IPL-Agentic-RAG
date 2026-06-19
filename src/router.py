@@ -136,7 +136,6 @@ COMPARISON_KEYWORDS = {
     "comparison",
     "versus",
     "better",
-    "between",
 }
 
 def route_query(query: str) -> str:
@@ -154,7 +153,16 @@ def route_query(query: str) -> str:
     if words.intersection(DREAM11_KEYWORDS):
         return "dream11"
 
+    if "against" in words and ("average" in words or "run" in words or "strike" in words):
+        return "batting"
+
+    if "title" in words and "more than once" in query_lower:
+        return "trend"
+
     if "who will win" in query_lower or "predict" in words or "prediction" in words:
+        return "prediction"
+
+    if "against" in words and "strategy" in words:
         return "prediction"
 
     if "win rate" in query_lower or "winning rate" in query_lower:

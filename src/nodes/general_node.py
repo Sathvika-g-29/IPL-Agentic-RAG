@@ -3,16 +3,9 @@ from src.state import IPLState
 
 
 def general_node(state: IPLState, retriever: ChromaRetriever) -> IPLState:
-    chunks = retriever.retrieve(
-        query=state["query"],
-        top_k=3,
+    state["retrieved_chunks"] = []
+    state["answer"] = (
+        "I couldn't find this in the IPL dataset. "
+        "Try asking about team profiles, batting, bowling, venues, head-to-head records, recent form, trends, records, comparison, prediction, validation, or Dream11."
     )
-
-    state["retrieved_chunks"] = chunks
-
-    if not chunks:
-        state["answer"] = "No relevant IPL data found."
-        return state
-
-    state["answer"] = chunks[0]["content"]
     return state

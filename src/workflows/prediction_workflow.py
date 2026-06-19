@@ -108,6 +108,18 @@ def prediction_workflow(state: IPLState, retriever: ChromaRetriever) -> IPLState
     query = state["query"]
     teams = extract_team_codes(query)
 
+    if len(teams) < 2 or "2025" in query or "next year" in query.lower() or "future" in query.lower():
+        state["route"] = "prediction"
+        state["answer"] = (
+            "This prediction request is outside the current dataset. "
+            "Please ask about a matchup between two IPL teams present in the corpus."
+        )
+        state["h2h_chunks"] = []
+        state["venue_chunks"] = []
+        state["form_chunks"] = []
+        state["trend_chunks"] = []
+        return state
+
     h2h_pool = retriever.retrieve(query=query, node="H2HNode", top_k=10)
     exact_h2h_chunk = find_exact_h2h_chunk(h2h_pool, teams)
     h2h_chunks = [exact_h2h_chunk] if exact_h2h_chunk else []

@@ -6,6 +6,14 @@ from src.nodes.analytics_utils import role_matches, top_by_metric
 def batting_node(state: IPLState, retriever: ChromaRetriever) -> IPLState:
     query = state["query"].lower()
 
+    if "against" in query and ("left-arm" in query or "left arm" in query or "specifically" in query):
+        state["retrieved_chunks"] = []
+        state["answer"] = (
+            "The dataset does not contain split batting stats for this specific matchup condition. "
+            "Ask about career batting totals, strike rate, averages, or opener comparisons."
+        )
+        return state
+
     chunks = retriever.retrieve(
         query=state["query"],
         node="BattingStatsNode",
