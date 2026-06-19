@@ -1,4 +1,5 @@
 from src.embeddings import tokenize
+from src.llm import classify_route_with_llm
 
 
 TEAM_KEYWORDS = {
@@ -139,6 +140,10 @@ COMPARISON_KEYWORDS = {
 }
 
 def route_query(query: str) -> str:
+    llm_route = classify_route_with_llm(query)
+    if llm_route:
+        return llm_route
+
     words = set(tokenize(query))
     query_lower = query.lower()
     if words.intersection(COMPARISON_KEYWORDS):

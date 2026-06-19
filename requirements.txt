@@ -2,3 +2,4 @@ langgraph
 chromadb
 pypdf
 streamlit
+openai
