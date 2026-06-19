@@ -56,6 +56,8 @@ FORM_KEYWORDS = {
     "recent",
     "last",
     "trend",
+    "consistent",
+    "consistency",
 }
 
 RECORDS_KEYWORDS = {
@@ -95,6 +97,16 @@ VALIDATION_KEYWORDS = {
     "mismatch",
     "secondary",
     "hallucination",
+}
+
+TREND_KEYWORDS = {
+    "trend",
+    "consistent",
+    "consistency",
+    "stable",
+    "season",
+    "seasonal",
+    "over",
 }
 
 VENUE_KEYWORDS = {
@@ -141,11 +153,30 @@ def route_query(query: str) -> str:
         "h2h": len(words.intersection(H2H_KEYWORDS)),
         "form": len(words.intersection(FORM_KEYWORDS)),
         "records": len(words.intersection(RECORDS_KEYWORDS)),
+        "trend": len(words.intersection(TREND_KEYWORDS)),
     }
 
-    best_route = max(scores, key=scores.get)
+    priority = [
+        "trend",
+        "h2h",
+        "form",
+        "records",
+        "venue",
+        "bowling",
+        "batting",
+        "team",
+    ]
 
-    if scores[best_route] == 0:
+    best_route = "general"
+    best_score = 0
+
+    for route in priority:
+        score = scores[route]
+        if score > best_score:
+            best_route = route
+            best_score = score
+
+    if best_score == 0:
         return "general"
 
     return best_route

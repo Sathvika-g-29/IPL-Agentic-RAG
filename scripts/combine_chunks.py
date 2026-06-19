@@ -10,6 +10,7 @@ INPUT_PATHS = [
     Path("data/h2h_chunks.jsonl"),
     Path("data/form_chunks.jsonl"),
     Path("data/records_chunks.jsonl"),
+    Path("data/trend_chunks.jsonl"),
 ]
 
 OUTPUT_PATH = Path("data/all_chunks.jsonl")

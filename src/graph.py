@@ -12,6 +12,7 @@ from src.nodes.venue_node import venue_node
 from src.nodes.h2h_node import h2h_node
 from src.nodes.form_node import form_node
 from src.nodes.records_node import records_node
+from src.nodes.trend_node import trend_node
 from src.nodes.general_node import general_node
 
 from src.retrievers.chroma_retriever import ChromaRetriever
@@ -81,6 +82,16 @@ def create_general_node(retriever):
         return general_node(state, retriever)
 
     return node
+
+
+def create_trend_node(retriever):
+
+    def node(state):
+        return trend_node(state, retriever)
+
+    return node
+
+
 def build_graph(retriever: ChromaRetriever):
 
     graph = StateGraph(IPLState)
@@ -123,6 +134,11 @@ def build_graph(retriever: ChromaRetriever):
     )
 
     graph.add_node(
+        "trend",
+        create_trend_node(retriever)
+    )
+
+    graph.add_node(
         "general",
         create_general_node(retriever)
     )
@@ -150,6 +166,7 @@ def build_graph(retriever: ChromaRetriever):
         "h2h": "h2h",
         "form": "form",
         "records": "records",
+        "trend": "trend",
         "validation": "validation",
         "prediction": "prediction",
         "dream11": "dream11",
@@ -163,6 +180,7 @@ def build_graph(retriever: ChromaRetriever):
     graph.add_edge("h2h", END)
     graph.add_edge("form", END)
     graph.add_edge("records", END)
+    graph.add_edge("trend", END)
     graph.add_edge("general", END)
     graph.add_edge("validation", END)
     graph.add_edge("prediction", END)
