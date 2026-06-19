@@ -145,6 +145,9 @@ def route_query(query: str) -> str:
     if "vs" in words and words.intersection(PREDICTION_KEYWORDS):
         return "prediction"
 
+    if "win" in words and "rate" in words:
+        return "trend"
+
     scores = {
         "team": len(words.intersection(TEAM_KEYWORDS)),
         "batting": len(words.intersection(BATTING_KEYWORDS)),
