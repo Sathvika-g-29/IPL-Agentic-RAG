@@ -79,7 +79,7 @@ Conditional Routing
 - Python
 - LangGraph
 - ChromaDB
-- Sentence Transformers
+- Hugging Face / Ollama / OpenAI LLM fallback
 - Retrieval-Augmented Generation (RAG)
 - Vector Search
 
@@ -284,15 +284,17 @@ Batting Stats: Virat Kohli plays for RCB. Role: Top-order bat...
 - H2H Agent
 - Form Agent
 - Records Agent
+- Trend Analysis Node
 - Validation Agent
 - Prediction Workflow
 - Dream11 Workflow
+- Hugging Face LLM routing and synthesis
+- Comparison Node
+- Streamlit Dashboard
 
 ### Planned Improvements
 
 - Multi-step LangGraph Workflow Execution
-- Trend Analysis Node
-- Streamlit Dashboard
 - Evaluation Benchmark Suite
 - Deployment
 
