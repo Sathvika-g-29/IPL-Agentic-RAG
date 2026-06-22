@@ -1,12 +1,13 @@
 from src.retrievers.chroma_retriever import ChromaRetriever
 from src.state import IPLState
+from src.llm import synthesize_with_llm
 
 
 def records_node(state: IPLState, retriever: ChromaRetriever) -> IPLState:
     chunks = retriever.retrieve(
         query=state["query"],
         node="RecordsNode",
-        top_k=3,
+        top_k=5,
     )
 
     state["retrieved_chunks"] = chunks
@@ -15,9 +16,23 @@ def records_node(state: IPLState, retriever: ChromaRetriever) -> IPLState:
         state["answer"] = "No records data found."
         return state
 
-    lines = ["Records results:"]
-    for chunk in chunks:
-        lines.append(f"- {chunk['content']}")
+    context = "\n\n".join(
+        chunk["content"]
+        for chunk in chunks
+    )
 
-    state["answer"] = "\n".join(lines)
+    prompt = f"""
+Context:
+{context}
+
+Question:
+{state['query']}
+
+Answer using only the context.
+"""
+
+    answer = synthesize_with_llm(prompt)
+
+    state["answer"] = answer or chunks[0]["content"]
+
     return state

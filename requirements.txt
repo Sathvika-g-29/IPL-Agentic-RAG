@@ -4,3 +4,5 @@ pypdf
 streamlit
 openai
 requests
+transformers
+torch
